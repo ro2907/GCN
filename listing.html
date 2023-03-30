@@ -9,6 +9,12 @@
     <meta name="author" content="Colorlib">
     <meta name="description" content="#">
     <meta name="keywords" content="#">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
     <!-- Favicons -->
     <link rel="shortcut icon" href="#">
     <!-- Page Title -->
@@ -315,7 +321,7 @@
                     <div class="map-fix">
                         <!-- data-toggle="affix" -->
                         <!-- Google map will appear here! Edit the Latitude, Longitude and Zoom Level below using data-attr-*  -->
-                        <div id="map" data-lat="40.674" data-lon="-73.945" data-zoom="14"></div>
+                        <div id="map" data-lat="-24.3845837" data-lon="-65.1321198" data-zoom="14"></div>
                     </div>
                 </div>
             </div>
@@ -360,31 +366,38 @@
     </script>
     <script>
         // Want to customize colors? go to snazzymaps.com
-        function myMap() {
+        // function myMap() {
             var maplat = $('#map').data('lat');
             var maplon = $('#map').data('lon');
             var mapzoom = $('#map').data('zoom');
+            var map = L.map('map').setView([maplat, maplon], mapzoom);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+        var marker = L.marker([maplat, maplon]).addTo(map);
             // Styles a map in night mode.
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: maplat,
-                    lng: maplon
-                },
-                zoom: mapzoom,
-                scrollwheel: false
-            });
-            var marker = new google.maps.Marker({
-                position: {
-                    lat: maplat,
-                    lng: maplon
-                },
-                map: map,
-                title: 'We are here!'
-            });
-        }
+        //     var map = new google.maps.Map(document.getElementById('map'), {
+        //         center: {
+        //             lat: maplat,
+        //             lng: maplon
+        //         },
+        //         zoom: mapzoom,
+        //         scrollwheel: false
+        //     });
+        //     var marker = new google.maps.Marker({
+        //         position: {
+        //             lat: maplat,
+        //             lng: maplon
+        //         },
+        //         map: map,
+        //         title: 'We are here!'
+        //     });
+        // }
+//  }
     </script>
     <!-- Map JS (Please change the API key below. Read documentation for more info) -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap&key=AIzaSyDMTUkJAmi1ahsx9uCGSgmcSmqDTBF9ygg"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script> -->
 </body>
 
 </html>
